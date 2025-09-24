@@ -1,0 +1,25 @@
+[package]
+name = "bootloader"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "bootloader"
+test = false
+bench = false
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[toolchain]
+target = "x86_64-unknown-uefi"
+
+[dependencies]
+log = "0.4.27"
+uefi = { version = "0.35.0", features = ["logger", "panic_handler"] }
+bootloader_api = "0.11"
+x86_64 = "0.14"
+spin = "0.9"
